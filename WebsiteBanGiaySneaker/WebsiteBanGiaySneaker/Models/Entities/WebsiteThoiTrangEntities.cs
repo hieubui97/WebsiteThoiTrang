@@ -36,6 +36,10 @@ namespace WebsiteBanGiaySneaker.Models.Entities
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AO>()
+                .Property(e => e.DonGia)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<AO>()
                 .HasMany(e => e.CHITIETAOs)
                 .WithRequired(e => e.AO)
                 .WillCascadeOnDelete(false);
@@ -111,6 +115,16 @@ namespace WebsiteBanGiaySneaker.Models.Entities
             modelBuilder.Entity<KHACHHANG>()
                 .Property(e => e.MatKhau)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<LOAIAO>()
+                .HasMany(e => e.AOs)
+                .WithRequired(e => e.LOAIAO)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<LOAIQUAN>()
+                .HasMany(e => e.QUANs)
+                .WithRequired(e => e.LOAIQUAN)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MAUSAC>()
                 .HasMany(e => e.CHITIETAOs)
@@ -189,6 +203,10 @@ namespace WebsiteBanGiaySneaker.Models.Entities
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<QUAN>()
+                .Property(e => e.DonGia)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<QUAN>()
                 .HasMany(e => e.CHITIETQUANs)
                 .WithRequired(e => e.QUAN)
                 .WillCascadeOnDelete(false);
@@ -216,6 +234,16 @@ namespace WebsiteBanGiaySneaker.Models.Entities
             modelBuilder.Entity<SIZEAO>()
                 .HasMany(e => e.CHITIETAOs)
                 .WithRequired(e => e.SIZEAO)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<THUONGHIEU>()
+                .HasMany(e => e.AOs)
+                .WithRequired(e => e.THUONGHIEU)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<THUONGHIEU>()
+                .HasMany(e => e.QUANs)
+                .WithRequired(e => e.THUONGHIEU)
                 .WillCascadeOnDelete(false);
         }
     }

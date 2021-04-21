@@ -24,13 +24,13 @@ namespace WebsiteBanGiaySneaker.Models.Entities
         [StringLength(200)]
         public string Anh { get; set; }
 
-        public int? MaLoaiAo { get; set; }
+        public int MaLoaiAo { get; set; }
 
-        public int? MaThuongHieu { get; set; }
+        public int MaThuongHieu { get; set; }
 
         public int? SoLuong { get; set; }
 
-        public int? DonGia { get; set; }
+        public decimal? DonGia { get; set; }
 
         [StringLength(200)]
         public string Anh2 { get; set; }

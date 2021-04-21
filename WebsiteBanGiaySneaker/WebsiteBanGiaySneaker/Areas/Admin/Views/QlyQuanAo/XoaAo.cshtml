@@ -1,0 +1,112 @@
+﻿@model WebsiteBanGiaySneaker.Models.Entities.AO
+
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+@section style{
+    <style>
+        dt {
+            text-align: left !important;
+        }
+    </style>
+}
+<br />
+<h2>XÓA</h2>
+
+<h3>Bạn có thực sự muốn xóa đôi giày này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã áo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaAo)
+        </dd>
+
+        <dt>
+            Tên áo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenAo)
+        </dd>
+
+        <dt>
+            Hình ảnh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anh)
+        </dd>
+
+        <dt>
+            Thương Hiệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THUONGHIEU.TenThuongHieu)
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            Đơn giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            Hình ảnh 2
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anh2)
+        </dd>
+
+        <dt>
+            Hình ảnh 3
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anh3)
+        </dd>
+
+        <dt>
+            Mô tả sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            Ngày cập nhật
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Trở về", "DanhSachAo", null, new { @class = "btn btn-danger" })
+        </div>
+    }
+</div>
