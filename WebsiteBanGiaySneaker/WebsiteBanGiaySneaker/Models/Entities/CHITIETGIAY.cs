@@ -6,8 +6,8 @@ namespace WebsiteBanGiaySneaker.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("CHITIETSP")]
-    public partial class CHITIETSP
+    [Table("CHITIETGIAY")]
+    public partial class CHITIETGIAY
     {
         [Key]
         [Column(Order = 0)]
@@ -26,10 +26,10 @@ namespace WebsiteBanGiaySneaker.Models.Entities
 
         public int? SoLuong { get; set; }
 
-        public virtual MauSac MauSac { get; set; }
+        public virtual MAUSAC MAUSAC { get; set; }
 
-        public virtual Size Size { get; set; }
+        public virtual SIZE SIZE { get; set; }
 
-        public virtual SANPHAM SANPHAM { get; set; }
+        public virtual GIAY GIAY { get; set; }
     }
 }

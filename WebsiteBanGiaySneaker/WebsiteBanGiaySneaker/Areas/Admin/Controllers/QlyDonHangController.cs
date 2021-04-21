@@ -12,7 +12,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
 {
     public class QlyDonHangController : BaseController
     {
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
         // GET: Admin/QlyDonHang
         public ActionResult DanhSachDonHang(string timkiem, int? page)
         {

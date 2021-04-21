@@ -1,4 +1,4 @@
-﻿@model WebsiteBanGiaySneaker.Models.Entities.SANPHAM
+﻿@model WebsiteBanGiaySneaker.Models.Entities.GIAY
 
 @{
     ViewBag.Title = "Thông tin chi tiết";
@@ -33,9 +33,9 @@
     </div>
     <div class="col-md-12" style="margin: 5px 0px;">
         <div>
-            @*<label class="col-md-2">  @Html.DisplayNameFor(model => model.SoLuongTong)</label>*@
+            @*<label class="col-md-2">  @Html.DisplayNameFor(model => model.SoLuong)</label>*@
             @Html.Label("Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10"> @Html.DisplayFor(model => model.SoLuongTong)</div>
+            <div class="col-md-10"> @Html.DisplayFor(model => model.SoLuong)</div>
         </div>
     </div>
     <div class="col-md-12" style="margin: 5px 0px;">
@@ -81,5 +81,5 @@
 <div class="col-md-4"  style="margin-top: 10px;">
     @Html.ActionLink("Sửa", "ChinhSua", new { @masp = Model.MaSP }, new { @class = "btn btn-danger" }) |
     @Html.ActionLink("Chi tiết sản phẩm", "ChiTiet", new { @masp = Model.MaSP }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Trở về", "QuanLySanPham", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Trở về", "DanhSachSanPham", null, new { @class = "btn btn-danger" })
 </div>

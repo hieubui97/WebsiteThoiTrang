@@ -11,26 +11,26 @@ using WebsiteBanGiaySneaker.Models.Entities;
 
 namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
 {
-    public class QlySanPhamController : BaseController
+    public class QlyGiayController : BaseController
     {
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
-        // GET: Admin/QlySanPham
-        public ActionResult QuanLySanPham(string timkiem, int? page)
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
+        // GET: Admin/QlyGiay
+        public ActionResult DanhSachSanPham(string timkiem, int? page)
         {
             ViewBag.TuKhoa = timkiem;
             int pageNumber = (page ?? 1);
             int pageSize = 5;
             if (timkiem != null)
             {
-                List<SANPHAM> listKQ = db.SANPHAMs.Where(n => n.TenSP.Contains(timkiem)).ToList();
+                List<GIAY> listKQ = db.GIAYs.Where(n => n.TenSP.Contains(timkiem)).ToList();
                 if (listKQ.Count == 0)
                 {
                     TempData["tb"] = "Không tìm thấy sản phẩm nào phù hợp.";
-                    return View(db.SANPHAMs.OrderBy(n => n.TenSP).ToPagedList(pageNumber, pageSize));
+                    return View(db.GIAYs.OrderBy(n => n.TenSP).ToPagedList(pageNumber, pageSize));
                 }
                 return View(listKQ.OrderBy(n => n.MaSP).ToPagedList(pageNumber, pageSize));
             }
-            return View(db.SANPHAMs.OrderBy(n => n.MaSP).ToPagedList(pageNumber, pageSize));
+            return View(db.GIAYs.OrderBy(n => n.MaSP).ToPagedList(pageNumber, pageSize));
         }
 
        
@@ -39,13 +39,13 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
         public ActionResult ThemMoi()
         {
             ViewBag.TenNSX = new SelectList(db.NSXes.ToList().OrderBy(n => n.TenNSX), "MaNSX", "TenNSX");
-            ViewBag.TenSP = new SelectList(db.SANPHAMs.ToList().OrderBy(n => n.TenSP), "MaSP", "TenSP");
+            ViewBag.TenSP = new SelectList(db.GIAYs.ToList().OrderBy(n => n.TenSP), "MaSP", "TenSP");
             return View();
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult ThemMoi(SANPHAM sp, HttpPostedFileBase fileUpload, HttpPostedFileBase fileUpload2, HttpPostedFileBase fileUpload3)
+        public ActionResult ThemMoi(GIAY sp, HttpPostedFileBase fileUpload, HttpPostedFileBase fileUpload2, HttpPostedFileBase fileUpload3)
         {
             int mansx = int.Parse(Request.Form["TenNSX"]);
             ViewBag.TenNSX = new SelectList(db.NSXes.ToList().OrderBy(n => n.TenNSX), "MaNSX", "TenNSX");
@@ -104,7 +104,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
                 sp.Anh3 = fileUpload3.FileName;
                 //sp.NgayCapNhat = DateTime.Now;
                 sp.MaNSX = mansx;
-                db.SANPHAMs.Add(sp);
+                db.GIAYs.Add(sp);
                 db.SaveChanges();
                 TempData["thanhcong"] = "Thêm mới sản phẩm thành công!";
             }
@@ -118,7 +118,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
         {
 
             //Lấy ra đối tượng sp theo mã
-            SANPHAM giay = db.SANPHAMs.SingleOrDefault(n => n.MaSP == masp);
+            GIAY giay = db.GIAYs.SingleOrDefault(n => n.MaSP == masp);
             if (giay == null)
             {
                 Response.StatusCode = 404;
@@ -131,7 +131,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult ChinhSua(SANPHAM giay)
+        public ActionResult ChinhSua(GIAY giay)
         {
             int mansx = int.Parse(Request.Form["TenNSX"]);
             //Thêm vào CSDL
@@ -157,7 +157,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
         public ActionResult HienThi(int masp)
         {
             //Lấy ra đối tượng sp theo mã
-            SANPHAM giay = db.SANPHAMs.SingleOrDefault(n => n.MaSP == masp);
+            GIAY giay = db.GIAYs.SingleOrDefault(n => n.MaSP == masp);
             if (giay == null)
             {
                 Response.StatusCode = 404;
@@ -171,7 +171,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
         public ActionResult Xoa(int masp)
         {
             //Lấy ra đối tượng sp theo mã
-            SANPHAM giay = db.SANPHAMs.SingleOrDefault(n => n.MaSP == masp);
+            GIAY giay = db.GIAYs.SingleOrDefault(n => n.MaSP == masp);
             if (giay == null)
             {
                 Response.StatusCode = 404;
@@ -183,15 +183,16 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
         [HttpPost, ActionName("Xoa")]
         public ActionResult XacNhanXoa(int masp)
         {
-            SANPHAM giay = db.SANPHAMs.SingleOrDefault(n => n.MaSP == masp);
+            GIAY giay = db.GIAYs.SingleOrDefault(n => n.MaSP == masp);
             if (giay == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            db.SANPHAMs.Remove(giay);
+            db.GIAYs.Remove(giay);
             db.SaveChanges();
-            return RedirectToAction("QuanLySanPham");
+
+            return RedirectToAction("DanhSachSanPham");
         }
 
 
@@ -200,14 +201,16 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
             TempData["Masp"] = masp;
             int pageNumber = (page ?? 1);
             int pageSize = 5;
+
             //Lấy ra đối tượng sp theo mã
-            var listgiay = db.CHITIETSPs.Where(n => n.MaSP == masp).OrderBy(n=>n.MaSP).ToPagedList(pageNumber,pageSize);
-            if (listgiay == null)
+            var listGiay = db.CHITIETGIAYs.Where(n => n.MaSP == masp).OrderBy(n=>n.MaSP).ToPagedList(pageNumber,pageSize);
+            if (listGiay == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            return View(listgiay);
+
+            return View(listGiay);
         }
     }
 

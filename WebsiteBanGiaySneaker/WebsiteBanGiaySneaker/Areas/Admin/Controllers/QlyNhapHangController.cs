@@ -13,7 +13,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
    
     public class QlyNhapHangController : BaseController
     {
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
         // GET: Admin/QlyNhapHang
         public ActionResult DanhSachPhieuNhap(string timkiem, int? page)
         {
@@ -83,9 +83,9 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult ThemMoiCTPN(int mapn)
         {
-            ViewBag.TenSP = new SelectList(db.SANPHAMs.ToList().OrderBy(n => n.TenSP), "MaSP", "TenSP");
-            ViewBag.TenMau = new SelectList(db.MauSacs.ToList().OrderBy(n => n.Color), "MaMau", "Color");
-            ViewBag.TenSize = new SelectList(db.Sizes.ToList().OrderBy(n => n.Size1), "MaSize", "Size1");
+            ViewBag.TenSP = new SelectList(db.GIAYs.ToList().OrderBy(n => n.TenSP), "MaSP", "TenSP");
+            ViewBag.TenMau = new SelectList(db.MAUSACs.ToList().OrderBy(n => n.Color), "MaMau", "Color");
+            ViewBag.TenSize = new SelectList(db.SIZEs.ToList().OrderBy(n => n.Size1), "MaSize", "Size1");
             return View();
         }
 
@@ -98,12 +98,12 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
             int masize = int.Parse(Request.Form["TenSize"]);
             int soluong = int.Parse(Request.Form["SoLuong"]);
             int gia = int.Parse(Request.Form["Gia"]);
-            ViewBag.TenSP = new SelectList(db.SANPHAMs.ToList().OrderBy(n => n.TenSP), "MaSP", "TenSP");
-            ViewBag.TenMau = new SelectList(db.MauSacs.ToList().OrderBy(n => n.Color), "MaMau", "Color");
-            ViewBag.TenSize = new SelectList(db.Sizes.ToList().OrderBy(n => n.Size1), "MaSize", "Size1");
+            ViewBag.TenSP = new SelectList(db.GIAYs.ToList().OrderBy(n => n.TenSP), "MaSP", "TenSP");
+            ViewBag.TenMau = new SelectList(db.MAUSACs.ToList().OrderBy(n => n.Color), "MaMau", "Color");
+            ViewBag.TenSize = new SelectList(db.SIZEs.ToList().OrderBy(n => n.Size1), "MaSize", "Size1");
             //var ctpnkt = db.CHITIETPNs.Where(n => n.MaSP == masp && n.MaSize == masize && n.MaMau == mamau).Count();
-            CHITIETSP ctsp = db.CHITIETSPs.SingleOrDefault(n => n.MaSP == masp && n.MaSize == masize && n.MaMau == mamau);
-            CHITIETSP ctspn = new CHITIETSP();
+            CHITIETGIAY ctsp = db.CHITIETGIAYs.SingleOrDefault(n => n.MaSP == masp && n.MaSize == masize && n.MaMau == mamau);
+            CHITIETGIAY ctspn = new CHITIETGIAY();
             //if (ctpnkt > 0)
             //{
             //    TempData["loi"] = "Sản phẩm trong phiếu nhập tồn tại";
@@ -118,7 +118,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
                     ctspn.MaMau = mamau;
                     ctspn.MaSize = masize;
                     ctspn.SoLuong = soluong;
-                    db.CHITIETSPs.Add(ctspn);
+                    db.CHITIETGIAYs.Add(ctspn);
                     db.SaveChanges();
                 }              
                 //chèn dữ liệu

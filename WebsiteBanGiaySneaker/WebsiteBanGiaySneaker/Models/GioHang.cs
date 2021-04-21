@@ -32,13 +32,13 @@ namespace WebsiteBanGiaySneaker.Models
 
         public double thanhtien { get { return soluong * dongia; } }
 
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
 
         public GioHang(int Masp,int Mamau,int Masize)
         {
             masp = Masp;
-            //var giay = (from s in db.SANPHAMs
-            //            join c in db.CHITIETSPs
+            //var giay = (from s in db.GIAYs
+            //            join c in db.CHITIETGIAYs
             //             on s.MaSP equals c.MaSP
             //            where s.MaSP == Masp
             //            select new GioHang(Masp, Mamau, Masize)
@@ -51,17 +51,17 @@ namespace WebsiteBanGiaySneaker.Models
             //                size = c.MaSize
             //            }).SingleOrDefault(s => s.masp == Masp && s.mau == Mamau && s.size == Masize);
 
-            SANPHAM giay = db.SANPHAMs.SingleOrDefault(n => n.MaSP == masp);
+            GIAY giay = db.GIAYs.SingleOrDefault(n => n.MaSP == masp);
             tensp = giay.TenSP;
             hinhanh = giay.Anh;
             dongia = double.Parse(giay.DonGia.ToString());
             soluong = 1;
-            CHITIETSP ctgiay = db.CHITIETSPs.SingleOrDefault(s =>s.MaSP == Masp && s.MaMau == Mamau && s.MaSize == Masize);
+            CHITIETGIAY ctgiay = db.CHITIETGIAYs.SingleOrDefault(s =>s.MaSP == Masp && s.MaMau == Mamau && s.MaSize == Masize);
             mamau = ctgiay.MaMau;
             masize = ctgiay.MaSize;
-            MauSac mausac = db.MauSacs.SingleOrDefault(m => m.MaMau == mamau);
+            MAUSAC mausac = db.MAUSACs.SingleOrDefault(m => m.MaMau == mamau);
             tenmau = mausac.Color;
-            Size sizes = db.Sizes.SingleOrDefault(s => s.MaSize == masize);
+            SIZE sizes = db.SIZEs.SingleOrDefault(s => s.MaSize == masize);
             tensize = sizes.Size1;
         }
 

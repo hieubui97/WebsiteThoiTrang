@@ -4,14 +4,21 @@
     ViewBag.Title = "Chi tiết khách hàng";
     Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
 }
-<br/>
+@section style{
+    <style>
+        dt {
+            text-align: left !important;
+        }
+    </style>
+}
+<br />
 <h2>CHI TIẾT</h2>
-<hr/>
+<hr />
 <div>
 
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.MAKH)
+            Mã KH
         </dt>
 
         <dd>
@@ -19,7 +26,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TenKH)
+            Tên KH
         </dt>
 
         <dd>
@@ -27,7 +34,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GioiTinh)
+            Giới tính
         </dt>
 
         <dd>
@@ -35,7 +42,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
+            Địa chỉ
         </dt>
 
         <dd>
@@ -51,7 +58,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sdt)
+            Số ĐT
         </dt>
 
         <dd>

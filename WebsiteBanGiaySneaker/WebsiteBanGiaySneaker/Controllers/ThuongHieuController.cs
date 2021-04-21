@@ -10,7 +10,7 @@ namespace WebsiteBanGiaySneaker.Controllers
 {
     public class ThuongHieuController : Controller
     {
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
         // GET: ThuongHieu
        public PartialViewResult DanhSachThuongHieuPartial()
         {
@@ -27,7 +27,7 @@ namespace WebsiteBanGiaySneaker.Controllers
                 Response.StatusCode = 404;
                 return null; 
             }
-            List<SANPHAM> listSP = db.SANPHAMs.Where(n => n.MaNSX == math).OrderBy(n => n.DonGia).ToList(); 
+            List<GIAY> listSP = db.GIAYs.Where(n => n.MaNSX == math).OrderBy(n => n.DonGia).ToList(); 
             if(listSP.Count==0)
             {
                 ViewBag.SP = "Hiện chưa có sản phẩm của thương hiệu này!!!" +

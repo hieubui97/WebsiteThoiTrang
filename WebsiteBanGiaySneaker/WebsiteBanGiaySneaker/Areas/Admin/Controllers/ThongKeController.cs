@@ -11,7 +11,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
 {
     public class ThongKeController : BaseController
     {
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
         // GET: Admin/ThongKe
         public ActionResult Index(DateTime? NgayA,DateTime? NgayB)
         {

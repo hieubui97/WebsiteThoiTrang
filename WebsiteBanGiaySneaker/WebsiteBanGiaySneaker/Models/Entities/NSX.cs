@@ -12,7 +12,7 @@ namespace WebsiteBanGiaySneaker.Models.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NSX()
         {
-            SANPHAMs = new HashSet<SANPHAM>();
+            GIAYs = new HashSet<GIAY>();
         }
 
         [Key]
@@ -35,6 +35,6 @@ namespace WebsiteBanGiaySneaker.Models.Entities
         public string Sdt { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
+        public virtual ICollection<GIAY> GIAYs { get; set; }
     }
 }

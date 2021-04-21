@@ -9,14 +9,21 @@
     ViewBag.Title = "HienThiNV";
     Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
 }
-<br/>
-<h2>CHI TIẾT</h2>
-<hr/>
+@section style{
+    <style>
+        dt {
+            text-align: left !important;
+        }
+    </style>
+}
+<br />
+<h2>THÔNG TIN NHÂN VIÊN</h2>
+<hr />
 <div>
 
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.MaNV)
+            Mã NV:
         </dt>
 
         <dd>
@@ -24,7 +31,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TenNV)
+            Tên NV:
         </dt>
 
         <dd>
@@ -32,7 +39,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
+            Địa chỉ:
         </dt>
 
         <dd>
@@ -40,7 +47,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Email):
         </dt>
 
         <dd>
@@ -48,7 +55,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sdt)
+            Số ĐT:
         </dt>
 
         <dd>
@@ -56,7 +63,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GioiTinh)
+            Giới tính:
         </dt>
 
         <dd>
@@ -64,7 +71,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
+            Ngày sinh:
         </dt>
 
         <dd>
@@ -72,7 +79,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CMND)
+            @Html.DisplayNameFor(model => model.CMND):
         </dt>
 
         <dd>
@@ -80,16 +87,23 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.QuyenNV)
+            Quyền:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.QuyenNV)
+            @if (Model.QuyenNV == "1")
+            {
+                @:Quản lý
+            }
+            else
+            {
+                @:Nhân viên
+            }
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Chỉnh sửa", "ChinhSuaNV", new { @manv=Model.MaNV},new {@class= "btn btn-success" }) |
-    @Html.ActionLink("Trở về", "DanhSachNhanVien",null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Chỉnh sửa", "ChinhSuaNV", new { @manv = Model.MaNV }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Trở về", "DanhSachNhanVien", null, new { @class = "btn btn-danger" })
 </p>

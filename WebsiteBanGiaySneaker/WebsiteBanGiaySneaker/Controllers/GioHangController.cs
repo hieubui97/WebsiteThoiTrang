@@ -13,7 +13,7 @@ namespace WebsiteBanGiaySneaker.Controllers
     public class GioHangController : Controller
     {
 
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
 
         #region Giỏ hàng
         //Lấy giỏi hàng
@@ -37,14 +37,14 @@ namespace WebsiteBanGiaySneaker.Controllers
             int mau = int.Parse(Request.Form["MauSac"]);
             int sizes = int.Parse(Request.Form["Size"]);
             //kiểm tra sự tồn tại của giày
-            SANPHAM giay = db.SANPHAMs.SingleOrDefault(n => n.MaSP == masp);
+            GIAY giay = db.GIAYs.SingleOrDefault(n => n.MaSP == masp);
             if (giay == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
             //kiểm tra tồn  tại màu sắc và size của đôi giày
-            CHITIETSP giay1 = db.CHITIETSPs.SingleOrDefault(n => n.MaSP == masp && n.MaMau == mau && n.MaSize == sizes);
+            CHITIETGIAY giay1 = db.CHITIETGIAYs.SingleOrDefault(n => n.MaSP == masp && n.MaMau == mau && n.MaSize == sizes);
             if (giay1 == null)
             {
                 TempData["kthanhcong"] = "Sản phẩm hiện hết hàng. Bạn thử lựa chọn màu sắc hoặc size khác!";
@@ -54,7 +54,7 @@ namespace WebsiteBanGiaySneaker.Controllers
             List<GioHang> listGioHang = LayGioHang();
             //Kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa?
             GioHang sanpham = listGioHang.Find(n => n.masp == masp && n.mamau == mau && n.masize == sizes);
-            var slgiay = db.CHITIETSPs.SingleOrDefault(n => n.MaSP == masp && n.MaMau == mau && n.MaSize == sizes).SoLuong;
+            var slgiay = db.CHITIETGIAYs.SingleOrDefault(n => n.MaSP == masp && n.MaMau == mau && n.MaSize == sizes).SoLuong;
             TempData["TongSoLuong"] = TongSoLuong();
             if (TongSoLuongSP(masp) >= slgiay && sanpham != null)
             {
@@ -88,7 +88,7 @@ namespace WebsiteBanGiaySneaker.Controllers
         public ActionResult CapNhatGioHang(int masp, int mamau, int masize, FormCollection f)
         {
             int kiemtra = Int32.Parse(Request.Form["txtSoLuong"]);
-            var slgiay = db.CHITIETSPs.SingleOrDefault(n => n.MaSP == masp && n.MaMau == mamau && n.MaSize == masize).SoLuong;
+            var slgiay = db.CHITIETGIAYs.SingleOrDefault(n => n.MaSP == masp && n.MaMau == mamau && n.MaSize == masize).SoLuong;
             if (kiemtra > slgiay)
             {
                 TempData["loisl"] = "Sản phẩm hiện kông đủ số lượng yêu cầu. Vui lòng chọn ít hơn!";
@@ -109,7 +109,7 @@ namespace WebsiteBanGiaySneaker.Controllers
             }
             else
             {
-                SANPHAM giay = db.SANPHAMs.SingleOrDefault(n => n.MaSP == masp);
+                GIAY giay = db.GIAYs.SingleOrDefault(n => n.MaSP == masp);
                 if (giay == null)
                 {
                     Response.StatusCode = 404;
@@ -132,7 +132,7 @@ namespace WebsiteBanGiaySneaker.Controllers
         public ActionResult XoaGioHang(int masp, int mamau, int masize)
         {
             //Ktra sản phẩm
-            SANPHAM giay = db.SANPHAMs.SingleOrDefault(n => n.MaSP == masp);
+            GIAY giay = db.GIAYs.SingleOrDefault(n => n.MaSP == masp);
             if (giay == null)
             {
                 Response.StatusCode = 404;

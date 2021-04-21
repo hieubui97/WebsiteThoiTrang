@@ -22,6 +22,8 @@
     <link href="~/Content/Admin/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
     <!-- DataTables Responsive CSS -->
     <link href="~/Content/Admin/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!---->
+    @RenderSection("style", false)
     <!--icon-->
     @*<script src="~/Content/NguoiDung/fontawesome-free-5.0.13/svg-with-js/js/fontawesome.min.js"></script>*@
     @*<link href="~/Content/NguoiDung/css/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome.min.css" rel="stylesheet" />*@
@@ -122,10 +124,16 @@
                             <a href="#"><i class="fa fa-file-text"></i> Quản lý sản phẩm<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="@Url.Action("QuanLySanPham", "QlySanPham")"><i class="fa fa-list-alt"></i> Sản phẩm</a>
+                                    <a href="@Url.Action("DanhSachSanPham", "QlyGiay")"><i class="fa fa-list-alt"></i> Danh mục Áo</a>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("DanhSachMauSac", "QlyMauSac")"><i class="fa fa-adjust"></i> Màu sắc</a>
+                                    <a href="@Url.Action("DanhSachSanPham", "QlyGiay")"><i class="fa fa-list-alt"></i> Danh mục Quần</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("DanhSachSanPham", "QlyGiay")"><i class="fa fa-list-alt"></i> Danh mục Giày</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("DanhSachMauSac", "QlyMauSac")"><i class="fa fa-adjust"></i> Danh mục Màu sắc</a>
                                 </li>
                                 @*<li>
                                         <a href="#"><i class="fa fa-arrows-alt "></i> Kích thước</a>

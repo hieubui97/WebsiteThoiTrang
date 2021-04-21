@@ -11,7 +11,7 @@ namespace WebsiteBanGiaySneaker.Areas.Admin.Controllers
 {
     public class LoginController : Controller
     {
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
         // GET: Admin/Login
         [HttpGet]
         public ActionResult Login()

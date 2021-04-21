@@ -170,7 +170,7 @@
     <Compile Include="Areas\Admin\Controllers\QlyMauSacController.cs" />
     <Compile Include="Areas\Admin\Controllers\QlyNhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\QlyNhapHangController.cs" />
-    <Compile Include="Areas\Admin\Controllers\QlySanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QlyGiayController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThongKeController.cs" />
     <Compile Include="Controllers\CuaHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
@@ -185,19 +185,27 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\AO.cs" />
+    <Compile Include="Models\Entities\CHITIETAO.cs" />
+    <Compile Include="Models\Entities\CHITIETGIAY.cs" />
     <Compile Include="Models\Entities\CHITIETHD.cs" />
     <Compile Include="Models\Entities\CHITIETPN.cs" />
-    <Compile Include="Models\Entities\CHITIETSP.cs" />
+    <Compile Include="Models\Entities\CHITIETQUAN.cs" />
     <Compile Include="Models\Entities\DONHANG.cs" />
+    <Compile Include="Models\Entities\GIAY.cs" />
     <Compile Include="Models\Entities\KHACHHANG.cs" />
-    <Compile Include="Models\Entities\MauSac.cs" />
+    <Compile Include="Models\Entities\LOAIAO.cs" />
+    <Compile Include="Models\Entities\LOAIQUAN.cs" />
+    <Compile Include="Models\Entities\MAUSAC.cs" />
     <Compile Include="Models\Entities\NCC.cs" />
     <Compile Include="Models\Entities\NHANVIEN.cs" />
     <Compile Include="Models\Entities\NSX.cs" />
     <Compile Include="Models\Entities\PHIEUNHAP.cs" />
-    <Compile Include="Models\Entities\SANPHAM.cs" />
-    <Compile Include="Models\Entities\Size.cs" />
-    <Compile Include="Models\Entities\WebsiteBanGiaySneakerEntities.cs" />
+    <Compile Include="Models\Entities\QUAN.cs" />
+    <Compile Include="Models\Entities\SIZE.cs" />
+    <Compile Include="Models\Entities\SIZEAO.cs" />
+    <Compile Include="Models\Entities\THUONGHIEU.cs" />
+    <Compile Include="Models\Entities\WebsiteThoiTrangEntities.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1954,10 +1962,10 @@
     <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
     <Content Include="Areas\Admin\Views\QlyKhachHang\DanhSachKhachHang.cshtml" />
     <Content Include="Areas\Admin\Views\QlyNhanVien\DanhSachNhanVien.cshtml" />
-    <Content Include="Areas\Admin\Views\QlySanPham\QuanLySanPham.cshtml" />
-    <Content Include="Areas\Admin\Views\QlySanPham\ChinhSua.cshtml" />
-    <Content Include="Areas\Admin\Views\QlySanPham\HienThi.cshtml" />
-    <Content Include="Areas\Admin\Views\QlySanPham\Xoa.cshtml" />
+    <Content Include="Areas\Admin\Views\QlyGiay\DanhSachSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\QlyGiay\ChinhSua.cshtml" />
+    <Content Include="Areas\Admin\Views\QlyGiay\HienThi.cshtml" />
+    <Content Include="Areas\Admin\Views\QlyGiay\Xoa.cshtml" />
     <Content Include="Areas\Admin\Views\QlyNhanVien\ThemMoiNV.cshtml" />
     <Content Include="Areas\Admin\Views\QlyNhanVien\ChinhSuaNV.cshtml" />
     <Content Include="Areas\Admin\Views\QlyNhanVien\HienThiNV.cshtml" />
@@ -1977,7 +1985,7 @@
     <Content Include="Content\Admin\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Content\Admin\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Content\Admin\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.woff" />
-    <Content Include="Areas\Admin\Views\QlySanPham\ThemMoi.cshtml" />
+    <Content Include="Areas\Admin\Views\QlyGiay\ThemMoi.cshtml" />
     <Content Include="Areas\Admin\Views\QlyDonHang\DanhSachDonHang.cshtml" />
     <Content Include="Areas\Admin\Views\QlyDonHang\DanhSachChuaDuyet.cshtml" />
     <Content Include="Areas\Admin\Views\QlyDonHang\ChiTietDH.cshtml" />
@@ -1990,7 +1998,7 @@
     <Content Include="Areas\Admin\Views\Login\kCoQuyen.cshtml" />
     <Content Include="Areas\Admin\Views\QlyDonHang\DonHangChoGiao.cshtml" />
     <Content Include="Areas\Admin\Views\QlyNhapHang\ThemMoiCTPN.cshtml" />
-    <Content Include="Areas\Admin\Views\QlySanPham\ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\QlyGiay\ChiTiet.cshtml" />
     <None Include="Views\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Views\Scripts\jquery-1.10.2.js" />
     <Content Include="Views\Scripts\jquery-1.10.2.min.js" />

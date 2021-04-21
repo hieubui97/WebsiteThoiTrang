@@ -1,6 +1,5 @@
-﻿@using PagedList;
-@using PagedList.Mvc;
-@model PagedList.PagedList<WebsiteBanGiaySneaker.Models.Entities.MauSac>
+﻿@using PagedList.Mvc;
+@model PagedList.PagedList<WebsiteBanGiaySneaker.Models.Entities.MAUSAC>
 
 @{
     /**/
@@ -68,14 +67,18 @@
     </tbody>
 </table>
 @*Tạo link liên kết các trang*@
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
-        <div>
-            @Html.PagedListPager(Model, page => Url.Action("DanhSachMauSac", new { @timkiem = @ViewBag.TuKhoa, page = page }))
-        </div>
-        <script>
-            $(document).ready(function () {
-                $('#dataTables-example').DataTable({
-                    responsive: true
-                });
+@if (@Model.PageCount > 1)
+{
+    @:Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("DanhSachMauSac", new { @timkiem = @ViewBag.TuKhoa, page = page }))
+    </div>
+}
+
+@*<script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true
             });
-        </script>
+        });
+    </script>*@

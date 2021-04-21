@@ -11,7 +11,7 @@ namespace WebsiteBanGiaySneaker.Controllers
     public class CuaHangController : Controller
     {
 
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
         // GET: CuaHang
         public ActionResult Index()
         {

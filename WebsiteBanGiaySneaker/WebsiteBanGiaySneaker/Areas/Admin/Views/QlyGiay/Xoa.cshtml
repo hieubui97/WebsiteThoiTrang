@@ -1,4 +1,4 @@
-﻿@model WebsiteBanGiaySneaker.Models.Entities.SANPHAM
+﻿@model WebsiteBanGiaySneaker.Models.Entities.GIAY
 
 @{
     ViewBag.Title = "Xóa sản phẩm";
@@ -44,11 +44,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SoLuongTong)
+            @Html.DisplayNameFor(model => model.SoLuong)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SoLuongTong)
+            @Html.DisplayFor(model => model.SoLuong)
         </dd>
 
         <dt>
@@ -99,7 +99,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Xóa" class="btn btn-danger" /> |
-            @Html.ActionLink("Trở về", "QuanLySanPham",null,new { @class="btn btn-danger"  })
+            @Html.ActionLink("Trở về", "DanhSachSanPham", null,new { @class="btn btn-danger"  })
         </div>
     }
 </div>

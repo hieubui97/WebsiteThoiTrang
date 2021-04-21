@@ -11,7 +11,7 @@ namespace WebsiteBanGiaySneaker.Controllers
 {
     public class KhachHangController : Controller
     {
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
 
         // GET: KhachHang
         public ActionResult Index()

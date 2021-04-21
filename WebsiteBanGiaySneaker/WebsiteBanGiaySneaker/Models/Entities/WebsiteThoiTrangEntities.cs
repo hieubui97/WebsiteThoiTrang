@@ -5,28 +5,41 @@ using System.Linq;
 
 namespace WebsiteBanGiaySneaker.Models.Entities
 {
-    public partial class WebsiteBanGiaySneakerEntities : DbContext
+    public partial class WebsiteThoiTrangEntities : DbContext
     {
-        public WebsiteBanGiaySneakerEntities()
-            : base("name=WebsiteBanGiaySneakerEntities")
+        public WebsiteThoiTrangEntities()
+            : base("name=WebsiteThoiTrangEntities")
         {
         }
 
+        public virtual DbSet<AO> AOs { get; set; }
+        public virtual DbSet<CHITIETAO> CHITIETAOs { get; set; }
+        public virtual DbSet<CHITIETGIAY> CHITIETGIAYs { get; set; }
         public virtual DbSet<CHITIETHD> CHITIETHDs { get; set; }
         public virtual DbSet<CHITIETPN> CHITIETPNs { get; set; }
-        public virtual DbSet<CHITIETSP> CHITIETSPs { get; set; }
+        public virtual DbSet<CHITIETQUAN> CHITIETQUANs { get; set; }
         public virtual DbSet<DONHANG> DONHANGs { get; set; }
+        public virtual DbSet<GIAY> GIAYs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
-        public virtual DbSet<MauSac> MauSacs { get; set; }
+        public virtual DbSet<LOAIAO> LOAIAOs { get; set; }
+        public virtual DbSet<LOAIQUAN> LOAIQUANs { get; set; }
+        public virtual DbSet<MAUSAC> MAUSACs { get; set; }
         public virtual DbSet<NCC> NCCs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<NSX> NSXes { get; set; }
         public virtual DbSet<PHIEUNHAP> PHIEUNHAPs { get; set; }
-        public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<Size> Sizes { get; set; }
+        public virtual DbSet<QUAN> QUANs { get; set; }
+        public virtual DbSet<SIZE> SIZEs { get; set; }
+        public virtual DbSet<SIZEAO> SIZEAOs { get; set; }
+        public virtual DbSet<THUONGHIEU> THUONGHIEUx { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AO>()
+                .HasMany(e => e.CHITIETAOs)
+                .WithRequired(e => e.AO)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<CHITIETHD>()
                 .Property(e => e.DonGia)
                 .HasPrecision(18, 0);
@@ -56,6 +69,37 @@ namespace WebsiteBanGiaySneaker.Models.Entities
                 .WithRequired(e => e.DONHANG)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<GIAY>()
+                .Property(e => e.Anh)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<GIAY>()
+                .Property(e => e.DonGia)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<GIAY>()
+                .Property(e => e.Anh2)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<GIAY>()
+                .Property(e => e.Anh3)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<GIAY>()
+                .HasMany(e => e.CHITIETGIAYs)
+                .WithRequired(e => e.GIAY)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<GIAY>()
+                .HasMany(e => e.CHITIETHDs)
+                .WithRequired(e => e.GIAY)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<GIAY>()
+                .HasMany(e => e.CHITIETPNs)
+                .WithRequired(e => e.GIAY)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<KHACHHANG>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
@@ -68,19 +112,29 @@ namespace WebsiteBanGiaySneaker.Models.Entities
                 .Property(e => e.MatKhau)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<MauSac>()
+            modelBuilder.Entity<MAUSAC>()
+                .HasMany(e => e.CHITIETAOs)
+                .WithRequired(e => e.MAUSAC)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<MAUSAC>()
+                .HasMany(e => e.CHITIETGIAYs)
+                .WithRequired(e => e.MAUSAC)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<MAUSAC>()
                 .HasMany(e => e.CHITIETHDs)
-                .WithRequired(e => e.MauSac)
+                .WithRequired(e => e.MAUSAC)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<MauSac>()
+            modelBuilder.Entity<MAUSAC>()
                 .HasMany(e => e.CHITIETPNs)
-                .WithRequired(e => e.MauSac)
+                .WithRequired(e => e.MAUSAC)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<MauSac>()
-                .HasMany(e => e.CHITIETSPs)
-                .WithRequired(e => e.MauSac)
+            modelBuilder.Entity<MAUSAC>()
+                .HasMany(e => e.CHITIETQUANs)
+                .WithRequired(e => e.MAUSAC)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<NCC>()
@@ -121,7 +175,7 @@ namespace WebsiteBanGiaySneaker.Models.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<NSX>()
-                .HasMany(e => e.SANPHAMs)
+                .HasMany(e => e.GIAYs)
                 .WithRequired(e => e.NSX)
                 .WillCascadeOnDelete(false);
 
@@ -134,50 +188,34 @@ namespace WebsiteBanGiaySneaker.Models.Entities
                 .WithRequired(e => e.PHIEUNHAP)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.Anh)
-                .IsUnicode(false);
+            modelBuilder.Entity<QUAN>()
+                .HasMany(e => e.CHITIETQUANs)
+                .WithRequired(e => e.QUAN)
+                .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.DonGia)
-                .HasPrecision(18, 0);
+            modelBuilder.Entity<SIZE>()
+                .HasMany(e => e.CHITIETGIAYs)
+                .WithRequired(e => e.SIZE)
+                .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.Anh2)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SANPHAM>()
-                .Property(e => e.Anh3)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SIZE>()
                 .HasMany(e => e.CHITIETHDs)
-                .WithRequired(e => e.SANPHAM)
+                .WithRequired(e => e.SIZE)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SIZE>()
                 .HasMany(e => e.CHITIETPNs)
-                .WithRequired(e => e.SANPHAM)
+                .WithRequired(e => e.SIZE)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SANPHAM>()
-                .HasMany(e => e.CHITIETSPs)
-                .WithRequired(e => e.SANPHAM)
+            modelBuilder.Entity<SIZE>()
+                .HasMany(e => e.CHITIETQUANs)
+                .WithRequired(e => e.SIZE)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Size>()
-                .HasMany(e => e.CHITIETHDs)
-                .WithRequired(e => e.Size)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Size>()
-                .HasMany(e => e.CHITIETPNs)
-                .WithRequired(e => e.Size)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Size>()
-                .HasMany(e => e.CHITIETSPs)
-                .WithRequired(e => e.Size)
+            modelBuilder.Entity<SIZEAO>()
+                .HasMany(e => e.CHITIETAOs)
+                .WithRequired(e => e.SIZEAO)
                 .WillCascadeOnDelete(false);
         }
     }

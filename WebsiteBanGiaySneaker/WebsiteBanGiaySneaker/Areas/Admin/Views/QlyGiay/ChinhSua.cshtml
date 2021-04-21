@@ -1,4 +1,4 @@
-﻿@model WebsiteBanGiaySneaker.Models.Entities.SANPHAM
+﻿@model WebsiteBanGiaySneaker.Models.Entities.GIAY
 
 @{
     ViewBag.Title = "Chỉnh sửa giày";
@@ -62,11 +62,11 @@
         </div>
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.SoLuongTong, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            @*@Html.LabelFor(model => model.SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })*@
             @Html.Label("Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.TextBoxFor(model => model.SoLuongTong, new { @class = "form-control", @type = "number" })
-                @Html.ValidationMessageFor(model => model.SoLuongTong, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.SoLuong, new { @class = "form-control", @type = "number" })
+                @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -111,7 +111,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Lưu" class="btn btn-success" />
-                @Html.ActionLink("Trở về", "QuanLySanPham", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Trở về", "DanhSachSanPham", null, new { @class = "btn btn-danger" })
             </div>
         </div>
     </div>

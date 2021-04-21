@@ -6,15 +6,17 @@ namespace WebsiteBanGiaySneaker.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("MauSac")]
-    public partial class MauSac
+    [Table("MAUSAC")]
+    public partial class MAUSAC
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MauSac()
+        public MAUSAC()
         {
+            CHITIETAOs = new HashSet<CHITIETAO>();
+            CHITIETGIAYs = new HashSet<CHITIETGIAY>();
             CHITIETHDs = new HashSet<CHITIETHD>();
             CHITIETPNs = new HashSet<CHITIETPN>();
-            CHITIETSPs = new HashSet<CHITIETSP>();
+            CHITIETQUANs = new HashSet<CHITIETQUAN>();
         }
 
         [Key]
@@ -25,12 +27,18 @@ namespace WebsiteBanGiaySneaker.Models.Entities
         public string Color { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CHITIETAO> CHITIETAOs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CHITIETGIAY> CHITIETGIAYs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETHD> CHITIETHDs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETPN> CHITIETPNs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETSP> CHITIETSPs { get; set; }
+        public virtual ICollection<CHITIETQUAN> CHITIETQUANs { get; set; }
     }
 }

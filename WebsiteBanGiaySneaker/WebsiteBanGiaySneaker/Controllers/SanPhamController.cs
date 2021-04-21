@@ -10,25 +10,25 @@ namespace WebsiteBanGiaySneaker.Controllers
 {
     public class SanPhamController : Controller
     {
-        WebsiteBanGiaySneakerEntities db = new WebsiteBanGiaySneakerEntities();
+        WebsiteThoiTrangEntities db = new WebsiteThoiTrangEntities();
         // GET: SanPham
 
         public PartialViewResult SanPhamNoiBatPartial()
         {
-            var listSPNoiBat = db.SANPHAMs.Take(5).ToList();
+            var listSPNoiBat = db.GIAYs.Take(5).ToList();
             return PartialView(listSPNoiBat);
         }
 
         public PartialViewResult DanhSachSanPhamPartial()
         {
-            var listSP = db.SANPHAMs.Take(9).ToList();
+            var listSP = db.GIAYs.Take(9).ToList();
             return PartialView(listSP);
         }
 
         //Xem chi tiết giày
         public ViewResult XemChiTiet(int masp = 0, int mansx = 0)
         {
-            SANPHAM sp = db.SANPHAMs.SingleOrDefault(n => n.MaSP == masp);
+            GIAY sp = db.GIAYs.SingleOrDefault(n => n.MaSP == masp);
             if (sp == null)
             {
                 //Trả về trang báo lỗi
@@ -36,8 +36,8 @@ namespace WebsiteBanGiaySneaker.Controllers
                 return null;
             }
             //----
-            var mau = from a in db.CHITIETSPs
-                      join b in db.MauSacs
+            var mau = from a in db.CHITIETGIAYs
+                      join b in db.MAUSACs
                       on a.MaMau equals b.MaMau
                       where (a.MaSP == masp)
                       select new
@@ -46,8 +46,8 @@ namespace WebsiteBanGiaySneaker.Controllers
                           b.Color
                       };
 
-            var size = from a in db.CHITIETSPs
-                      join b in db.Sizes
+            var size = from a in db.CHITIETGIAYs
+                      join b in db.SIZEs
                       on a.MaSize equals b.MaSize
                       where (a.MaSP== masp)
                       select new
@@ -68,7 +68,7 @@ namespace WebsiteBanGiaySneaker.Controllers
             //    TempData["trangthai"] = "Hết hàng";
             //}
             //Tạo list sản phẩm liên quan
-            ViewBag.SPLienQuan = db.SANPHAMs.Where(n => n.MaSP != masp && n.MaNSX == mansx).Take(4).ToList();
+            ViewBag.SPLienQuan = db.GIAYs.Where(n => n.MaSP != masp && n.MaNSX == mansx).Take(4).ToList();
             return View(sp);
         }
 

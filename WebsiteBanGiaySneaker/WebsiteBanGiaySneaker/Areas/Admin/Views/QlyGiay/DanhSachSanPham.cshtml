@@ -1,6 +1,6 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
-@model PagedList.PagedList<WebsiteBanGiaySneaker.Models.Entities.SANPHAM>
+@model PagedList.PagedList<WebsiteBanGiaySneaker.Models.Entities.GIAY>
 
 @{
     ViewBag.Title = "Quản lý sản phẩm";
@@ -9,7 +9,7 @@
 <br />
 <h2>SẢN PHẨM</h2>
 <br />
-@using (Html.BeginForm("QuanLySanPham", "QlySanPham", FormMethod.Get))
+@using (Html.BeginForm("DanhSachSanPham", "QlyGiay", FormMethod.Get))
 {
     <div class="col-lg-8" style="padding: 0px;">
         <div class="input-group custom-search-form">
@@ -52,7 +52,7 @@
                 @Html.DisplayNameFor(model => model.First().MaNSX)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().SoLuongTong)
+                @Html.DisplayNameFor(model => model.First().SoLuong)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.First().DonGia)
@@ -86,7 +86,7 @@
                     @Html.DisplayFor(modelItem => item.NSX.TenNSX)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SoLuongTong)
+                    @Html.DisplayFor(modelItem => item.SoLuong)
                 </td>
                 <td>
                     <span>@item.DonGia VNĐ</span>
@@ -124,7 +124,7 @@
 @*Tạo link liên kết các trang*@
 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
 <div>
-    @Html.PagedListPager(Model, page => Url.Action("QuanLySanPham", new { @timkiem = @ViewBag.TuKhoa, page = page }))
+    @Html.PagedListPager(Model, page => Url.Action("DanhSachSanPham", new { @timkiem = @ViewBag.TuKhoa, page = page }))
 </div>
 
 @*@section script{

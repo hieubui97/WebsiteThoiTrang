@@ -6,38 +6,29 @@ namespace WebsiteBanGiaySneaker.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("CHITIETHD")]
-    public partial class CHITIETHD
+    [Table("CHITIETQUAN")]
+    public partial class CHITIETQUAN
     {
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MaDH { get; set; }
+        public int MaQuan { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MaSP { get; set; }
-
-        public int? SoLuong { get; set; }
-
-        public decimal? DonGia { get; set; }
+        public int MaSize { get; set; }
 
         [Key]
         [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MaSize { get; set; }
-
-        [Key]
-        [Column(Order = 3)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MaMau { get; set; }
 
-        public virtual DONHANG DONHANG { get; set; }
-
-        public virtual GIAY GIAY { get; set; }
+        public int? SoLuong { get; set; }
 
         public virtual MAUSAC MAUSAC { get; set; }
+
+        public virtual QUAN QUAN { get; set; }
 
         public virtual SIZE SIZE { get; set; }
     }

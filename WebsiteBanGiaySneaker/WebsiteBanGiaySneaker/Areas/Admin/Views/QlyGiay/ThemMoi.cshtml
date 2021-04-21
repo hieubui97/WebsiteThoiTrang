@@ -1,4 +1,4 @@
-﻿@model WebsiteBanGiaySneaker.Models.Entities.SANPHAM
+﻿@model WebsiteBanGiaySneaker.Models.Entities.GIAY
 
 @{
     /**/
@@ -9,7 +9,7 @@
 <br />
 <h2>THÊM MỚI SẢN PHẨM</h2>
 
-@using (Html.BeginForm("ThemMoi", "QlySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("ThemMoi", "QlyGiay", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     if (TempData["thanhcong"] != null)
     {
@@ -63,11 +63,11 @@
         </div>
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.SoLuongTong, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            @*@Html.LabelFor(model => model.SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })*@
             @Html.Label("Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.TextBoxFor(model => model.SoLuongTong, new { @class = "form-control", @type = "number" })
-                @Html.ValidationMessageFor(model => model.SoLuongTong, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.SoLuong, new { @class = "form-control", @type = "number" })
+                @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -117,7 +117,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-success" />
-                @Html.ActionLink("Trở về", "QuanLySanPham", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Trở về", "DanhSachSanPham", null, new { @class = "btn btn-danger" })
             </div>
         </div>
     </div>

@@ -37,10 +37,10 @@ namespace WebsiteBanGiaySneaker.Models.Entities
 
         public virtual PHIEUNHAP PHIEUNHAP { get; set; }
 
-        public virtual SANPHAM SANPHAM { get; set; }
+        public virtual GIAY GIAY { get; set; }
 
-        public virtual MauSac MauSac { get; set; }
+        public virtual MAUSAC MAUSAC { get; set; }
 
-        public virtual Size Size { get; set; }
+        public virtual SIZE SIZE { get; set; }
     }
 }

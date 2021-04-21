@@ -38,7 +38,7 @@
             @Html.DisplayNameFor(model => model.First().MaDH)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().SANPHAM.TenSP)
+            @Html.DisplayNameFor(model => model.First().GIAY.TenSP)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.First().SoLuong)
@@ -62,7 +62,7 @@
                 @Html.DisplayFor(modelItem => item.MaDH)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)
+                @Html.DisplayFor(modelItem => item.GIAY.TenSP)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SoLuong)
@@ -71,10 +71,10 @@
                 @string.Format("{0:0,0}", @item.DonGia) VNĐ
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Size.Size1)
+                @Html.DisplayFor(modelItem => item.SIZE.Size1)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MauSac.Color)
+                @Html.DisplayFor(modelItem => item.MAUSAC.Color)
             </td>
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

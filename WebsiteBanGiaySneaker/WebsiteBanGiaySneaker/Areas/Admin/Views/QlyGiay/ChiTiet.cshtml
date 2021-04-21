@@ -1,6 +1,5 @@
-﻿@using PagedList;
-@using PagedList.Mvc;
-@model PagedList.PagedList<WebsiteBanGiaySneaker.Models.Entities.CHITIETSP>
+﻿@using PagedList.Mvc;
+@model PagedList.PagedList<WebsiteBanGiaySneaker.Models.Entities.CHITIETGIAY>
 
 @{
     ViewBag.Title = "ChiTiet";
@@ -13,16 +12,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.First().SANPHAM.TenSP)
+                @Html.DisplayNameFor(model => model.First().GIAY.TenSP)
             </th>
             <th>
                 @Html.Label("Số lượng")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().MauSac.Color)
+                @Html.DisplayNameFor(model => model.First().MAUSAC.Color)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().Size.Size1)
+                @Html.DisplayNameFor(model => model.First().SIZE.Size1)
             </th>
             <th></th>
         </tr>
@@ -32,16 +31,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)
+                    @Html.DisplayFor(modelItem => item.GIAY.TenSP)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SoLuong)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MauSac.Color)
+                    @Html.DisplayFor(modelItem => item.MAUSAC.Color)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Size.Size1)
+                    @Html.DisplayFor(modelItem => item.SIZE.Size1)
                 </td>
                 <td>
                     @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
