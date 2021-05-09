@@ -1,0 +1,109 @@
+﻿@model WebsiteThoiTrang.Models.Entities.NHANVIEN
+
+@{
+    string quyen = (string)Session["Quyen"];
+    if (quyen == "0")
+    {
+        Response.Redirect("/Admin/Login/kCoQuyen");
+    }
+    ViewBag.Title = "HienThiNV";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+@section style{
+    <style>
+        dt {
+            text-align: left !important;
+        }
+    </style>
+}
+<br />
+<h2>THÔNG TIN NHÂN VIÊN</h2>
+<hr />
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Mã NV:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNV)
+        </dd>
+
+        <dt>
+            Tên NV:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNV)
+        </dd>
+
+        <dt>
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Số ĐT:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sdt)
+        </dd>
+
+        <dt>
+            Giới tính:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            Ngày sinh:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CMND):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CMND)
+        </dd>
+
+        <dt>
+            Quyền:
+        </dt>
+
+        <dd>
+            @if (Model.QuyenNV == "1")
+            {
+                @:Quản lý
+            }
+            else
+            {
+                @:Nhân viên
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "ChinhSuaNV", new { @manv = Model.MaNV }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Trở về", "DanhSachNhanVien", null, new { @class = "btn btn-danger" })
+</p>

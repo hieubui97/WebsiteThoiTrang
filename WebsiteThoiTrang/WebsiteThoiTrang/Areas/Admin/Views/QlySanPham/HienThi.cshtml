@@ -1,0 +1,85 @@
+﻿@model WebsiteThoiTrang.Models.Entities.SANPHAM
+
+@{
+    ViewBag.Title = "Thông tin chi tiết";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>THÔNG TIN SẢN PHẨM</h2>
+
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-12" style="margin: 5px 0px;">
+            <div>
+                @*<label class="col-md-2">  @Html.DisplayNameFor(model => model.MaSP)</label>*@
+                @Html.Label("Mã SP", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10"> @Html.DisplayFor(model => model.MaSP)</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" style="margin: 5px 0px;">
+        <div>
+            @*<label class="col-md-2">  @Html.DisplayNameFor(model => model.TenSP)</label>*@
+            @Html.Label("Tên SP", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10"> @Html.DisplayFor(model => model.TenSP)</div>
+        </div>
+    </div>
+    <div class="col-md-12" style="margin: 5px 0px;">
+        <div>
+            @*<label class="col-md-2">  @Html.DisplayNameFor(model => model.NSX.TenNSX)</label>*@
+            @Html.Label("Nhà SX", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10"> @Html.DisplayFor(model => model.NSX.TenNSX)</div>
+        </div>
+    </div>
+    <div class="col-md-12" style="margin: 5px 0px;">
+        <div>
+            @*<label class="col-md-2">  @Html.DisplayNameFor(model => model.SoLuong)</label>*@
+            @Html.Label("Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10"> @Html.DisplayFor(model => model.SoLuong)</div>
+        </div>
+    </div>
+    <div class="col-md-12" style="margin: 5px 0px;">
+        <div>
+            @*<label class="col-md-2">  @Html.DisplayNameFor(model => model.DonGia)</label>*@
+            @Html.Label("Đơn giá", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10"> @string.Format("{0:0,0}", Model.DonGia) VNĐ</div>
+        </div>
+    </div>
+
+    <div class="col-md-4" style="margin: 5px 0px;">
+        @*<div class="col-md-12">@Html.DisplayNameFor(model => model.Anh)</div>*@
+        @Html.Label("Hình ảnh 1", htmlAttributes: new { @class = "control-label col-md-2" })
+        <img width="200" height="200" src="@Url.Content("~/HinhAnh/HinhAnhSP/" + Model.Anh)" alt="">
+    </div>
+    <div class="col-md-4" style="margin: 5px 0px;">
+        @*<div class="col-md-12">@Html.DisplayNameFor(model => model.Anh2)</div>*@
+        @Html.Label("Hình ảnh 2", htmlAttributes: new { @class = "control-label col-md-2" })
+        <img width="200" height="200" src="@Url.Content("~/HinhAnh/HinhAnhSP/" + Model.Anh2)" alt="">
+    </div>
+    <div class="col-md-4" style="margin: 5px 0px;">
+        @*<div class="col-md-12">@Html.DisplayNameFor(model => model.Anh3)</div>*@
+        @Html.Label("Hình ảnh 3", htmlAttributes: new { @class = "control-label col-md-2 text-center" })
+        <img width="200" height="200" src="@Url.Content("~/HinhAnh/HinhAnhSP/" + Model.Anh3)" alt="">
+    </div>
+    <br />
+    <div class="col-md-12" style="margin: 5px 0px;">
+        <div>
+            @*<label class="col-md-2"> @Html.DisplayNameFor(model => model.MoTa)</label>*@
+            @Html.Label("Mô tả sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">@Html.Raw(Model.MoTa)</div>
+        </div>
+
+    </div>
+    <div class="col-md-12" style="margin: 5px 0px;">
+        <div>
+            <label class="col-md-2"> @Html.DisplayNameFor(model => model.NgayCapNhat)</label>
+            <div class="col-md-10"> @Html.DisplayFor(model => model.NgayCapNhat)</div>
+        </div>
+    </div>
+</div>
+@*<div class="col-md-offset-4">*@
+<div class="col-md-4"  style="margin-top: 10px;">
+    @Html.ActionLink("Sửa", "ChinhSua", new { @masp = Model.MaSP }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Chi tiết sản phẩm", "ChiTiet", new { @masp = Model.MaSP }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Trở về", "DanhSachSanPham", null, new { @class = "btn btn-danger" })
+</div>

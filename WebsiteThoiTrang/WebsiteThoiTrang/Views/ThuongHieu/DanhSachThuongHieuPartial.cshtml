@@ -1,0 +1,13 @@
+﻿@using WebsiteThoiTrang.Models.Entities;
+@model List<NSX>
+
+@foreach(var item in Model)
+{
+<ul>
+    <li>
+        <a  href="@Url.Action("SPTheoThuongHieu","ThuongHieu",new {@math = item.MaNSX })" class="span">@item.TenNSX</a>
+    </li>
+
+</ul>
+}
+

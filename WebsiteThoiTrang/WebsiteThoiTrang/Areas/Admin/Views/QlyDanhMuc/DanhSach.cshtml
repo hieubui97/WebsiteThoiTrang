@@ -1,0 +1,87 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<WebsiteThoiTrang.Models.Entities.LOAISP>
+
+@{
+    /**/
+
+    ViewBag.Title = "DanhSach";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Danh Mục</h2>
+<hr />
+@using (Html.BeginForm("DanhSach", "QlyDanhMuc", FormMethod.Get))
+{
+    <div class="col-lg-8">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" value="@ViewBag.TuKhoa" placeholder="Tìm kiếm theo tên" name="timkiem">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+            <div class="col-lg-4">
+                @Html.ActionLink("Thêm mới", "ThemMoi", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+}
+<br />
+<hr />
+@if (TempData["thongbao"] != null)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <strong>@TempData["thongbao"]</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().MaLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().TenLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ParentID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenLoai)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "ChinhSuaDanhMuc", new { @mamau = item.MaLoai })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+@*Tạo link liên kết các trang*@
+@if (@Model.PageCount > 1)
+{
+    @:Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("DanhSach", new { @timkiem = @ViewBag.TuKhoa, page = page }))
+    </div>
+}
+
+@*<script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });
+    </script>*@
